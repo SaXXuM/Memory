@@ -1,0 +1,41 @@
+body{
+    background-color:white;
+}
+.field {
+    max-width: 800px;
+    margin: 70px auto;
+    border:1px solid white;
+    text-align: center;
+}
+.image {
+    display:inline-block;
+    background-color:#3F339C;
+    border-radius: 5px;
+    width:200px;
+    height:200px;
+    background-size: cover;
+    margin:2px;
+    box-shadow: 1px 1px 2px 0px rgba(133,81,133,1);
+}
+.image:hover{
+    background-color:#585EDB;
+    cursor: pointer;
+    transition: 0.3s
+}
+.button {
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    padding: .8em 1em calc(.8em + 3px);
+    border-radius: 3px;
+    background: rgba(63, 51, 156, 1);
+    transition: 0.3s;
+    text-transform: uppercase;
+    font-size: 24px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+.button:hover {
+    box-shadow: 0 0 5px 3px #585EDB;
+}
