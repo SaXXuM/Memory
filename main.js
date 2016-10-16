@@ -18,7 +18,7 @@ function init(json) {
         images = JSON.parse(json),
         cardImages = [],
         openedCardIndex,
-        dontOpen;
+        numOpened = 0;
 
 
     function getCardIndex(card) {
@@ -38,7 +38,7 @@ function init(json) {
 
     function hideImage(card) {
         card.style.backgroundImage = "none";
-        dontOpen = false;
+        numOpened--;
     }
 
     document.querySelector('.button').onclick = function() {
@@ -52,13 +52,14 @@ function init(json) {
 
     document.querySelector('.field').onclick = function(event) {
         var target = event.target;
-        if (!target.classList.contains('image') || target.classList.contains('opened') || dontOpen) return;
+        if (!target.classList.contains('image') || target.classList.contains('opened') || numOpened > 0 ||
+            openedCardIndex === getCardIndex(target)) return;
         showImage(target);
         if (openedCardIndex === undefined) {
             openedCardIndex = getCardIndex(target);
         } else {
             if (cardImages[openedCardIndex] !== cardImages[getCardIndex(target)]) {
-                dontOpen = true;
+                numOpened = 2;
                 setTimeout(hideImage, 2000, target);
                 setTimeout(hideImage, 2000, cards[openedCardIndex]);
             } else {
@@ -86,7 +87,7 @@ function init(json) {
 
         cards.forEach(function (el) {
             showImage(el);
-            setTimeout(hideImage, 2000, el);
+            setTimeout(hideImage, 4000, el);
         });
     };
     startGame();
